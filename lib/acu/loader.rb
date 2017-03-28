@@ -7,6 +7,7 @@ module ACU
           'acu/errors',
           'acu/helpers',
           'acu/rules',
+          'acu/api'
         ]
       end
 

@@ -8,8 +8,9 @@ describe Rules do
     it '.define' do
       Rules.define do
         expect(self).to be ACU::Rules
-        # before they are all nil
-        expect(@_params).to be nil
+        # as define function called, the @_params will init empty
+        expect(@_params).not_to be nil
+        expect(@_params).to be_empty
       end
     end
   end

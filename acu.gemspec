@@ -14,7 +14,10 @@ Gem::Specification.new do |s|
   s.description = "A Rolebased Access Control Unit Gem"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files       = `git ls-files`.split("\n")
+  s.test_files  = `git ls-files -- rspec/*`.split("\n")
+
+  s.require_paths = ["lib"]
 
   s.add_dependency "rails", "~> 5.0.2"
 end

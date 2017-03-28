@@ -53,6 +53,7 @@ module ACU
       end
 
       def define(&block)
+        helper_initialize
         self.instance_eval(&block)
       end
 
