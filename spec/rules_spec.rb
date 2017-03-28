@@ -2,7 +2,7 @@
 class << Rules
   include ::RSpec::Matchers
 end
-    
+
 describe Rules do
   context 'intro' do
     it '.define' do
@@ -13,7 +13,7 @@ describe Rules do
       end
     end
   end
-  
+
   context 'setting parameters' do
     it '.namespace' do
       Rules.define do
@@ -43,12 +43,7 @@ describe Rules do
     end
     it '.action' do
       Rules.define do
-        action :zzz do
-          expect(@_params[:action]).to be_a Hash
-          expect(@_params[:action].length).to be 1
-          expect(@_params[:action]).to include :name
-          expect(@_params[:action][:name]).to be :zzz
-        end
+        expect {action :zzz}.to raise_error(AmbiguousRule, "at least one of the parent `controller` or `namespace` needs to be defined for the this action")
         # after they are all nil
         expect([@_params[:namespace], @_params[:controller], @_params[:action]]).to all be_nil
       end
@@ -118,7 +113,7 @@ describe Rules do
       end
     end
   end
-  
+
   context 'defining entities' do
     it '.define' do
       Rules.define do
@@ -146,12 +141,12 @@ describe Rules do
       for entity in [:admin, :guest, :enemy] do
         expect(Rules.entities).to include entity
       end
-    end 
+    end
   end
-  
+
   context 'add rules' do
     context '.build_rule_entry' do
-      it '{ invalid input }' do 
+      it '{ invalid input }' do
         Rules.define do
           # when there is not input defined for building entry it should fail
           expect { build_rule_entry }.to raise_error(AmbiguousRule, 'invalid input')
@@ -199,12 +194,9 @@ describe Rules do
           controller :foo do
             expect(build_rule_entry).to contain_exactly :controller
           end
-          action :foo do
-            expect(build_rule_entry).to contain_exactly :action
-          end
           namespace :foo do
             controller :bar do
-              expect(build_rule_entry == [:namespace, :controller]).to be true 
+              expect(build_rule_entry == [:namespace, :controller]).to be true
             end
           end
           namespace :foo do
@@ -224,32 +216,6 @@ describe Rules do
               end
             end
           end
-        end
-      end
-    end
-    context '.build_rule' do
-      it '{ it should create suitable hash tree as .build_rule_entry suggestes }' do
-        Rules.define do
-          namespace :foo do
-            controller :bar do
-              action :zzz do
-                build_rule({rule: :admin})
-              end
-              action :kkk do
-                build_rule({rule: :client})
-              end
-            end
-          end
-          
-          controller :bar do
-            action :zzz do
-              build_rule( {rule: :admin})
-            end
-            action :kkk do
-              build_rule( {rule: :client})
-            end
-          end
-          ap rules, indent: 2
         end
       end
     end
