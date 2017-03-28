@@ -4,9 +4,9 @@ module ACU
 
       def paths
         [
-          'acu/roles',
           'acu/errors',
-          'acu/helpers'
+          'acu/helpers',
+          'acu/rules',
         ]
       end
 

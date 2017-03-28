@@ -14,6 +14,7 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'awesome_print'
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
 end

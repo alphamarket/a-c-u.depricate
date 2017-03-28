@@ -9,6 +9,9 @@ module ACU
   class InvalidSyntax < StandardError
   end
 
+  class AmbiguousRule < StandardError
+  end
+
   class MissingUser < StandardError
   end
 

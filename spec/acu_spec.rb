@@ -1,4 +1,4 @@
 describe ACU do
-  it 'should exist' do
+  it 'defined? [ok]' do
   end
 end
