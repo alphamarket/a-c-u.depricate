@@ -1,3 +1,3 @@
-module Acu
-  # Your code goes here...
-end
+require 'acu/loader'
+ACU::Loader.load_paths
+

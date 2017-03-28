@@ -9,14 +9,12 @@ Gem::Specification.new do |s|
   s.version     = Acu::VERSION
   s.authors     = ["Dariush Hasanpour"]
   s.email       = ["b.g.dariush@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Acu."
-  s.description = "TODO: Description of Acu."
+  s.homepage    = "https://github.com/noise2/acu-rails"
+  s.summary     = "Access Control Unit"
+  s.description = "A Rolebased Access Control Unit Gem"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.0.2"
-
-  s.add_development_dependency "sqlite3"
 end
