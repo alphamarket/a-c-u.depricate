@@ -1,6 +1,6 @@
 module ACU
   def monitor
-    puts __FILE__, 'FUCKU, SHIT'
+    debug
   end
   module_function :monitor
 end

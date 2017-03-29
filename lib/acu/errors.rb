@@ -12,10 +12,19 @@ module ACU
   class AmbiguousRule < StandardError
   end
 
-  class MissingUser < StandardError
+  class InvalidData < StandardError
   end
 
-  class MissingAction < StandardError
+  class MissingUser < InvalidData
+  end
+
+  class MissingAction < InvalidData
+  end
+
+  class MissingController < InvalidData
+  end
+
+  class MissingNamespace < InvalidData
   end
 
 end
